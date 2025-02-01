@@ -1,0 +1,128 @@
+/* Base styles and responsive settings */
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    margin: 0;
+    padding: 0 20px;
+    overflow-x: hidden;
+  }
+  
+  header {
+    text-align: center;
+    padding: 20px;
+    animation: fadeInDown 1s ease-out;
+  }
+  
+  h1, h2 {
+    color: #2a7ae2;
+  }
+  
+  /* Sections styling with animations */
+  section {
+    margin: 20px 0;
+    padding: 10px;
+    border: 2px dashed #2a7ae2;
+    border-radius: 10px;
+    background-color: #fff;
+    animation: fadeIn 1s ease-out;
+  }
+  
+  /* Settings and avatar selection */
+  #settings, #avatar-selection, #chat-section, #mini-challenge {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Avatar selection styling */
+  .avatar-options {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .avatar {
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    transition: transform 0.3s, border 0.3s;
+  }
+  
+  .avatar:hover {
+    transform: scale(1.1);
+    border: 2px solid #2a7ae2;
+  }
+  
+  /* Textarea styling */
+  textarea {
+    width: 100%;
+    height: 80px;
+    font-size: 1em;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    transition: box-shadow 0.3s;
+  }
+  
+  textarea:focus {
+    box-shadow: 0 0 5px #2a7ae2;
+  }
+  
+  /* Button styling with hover animations */
+  button {
+    background-color: #2a7ae2;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  button:hover {
+    background-color: #1f5bb5;
+    transform: scale(1.05);
+  }
+  
+  /* Response and challenge feedback areas */
+  #responseArea, #challengeFeedback {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #e8f0fe;
+    border-radius: 5px;
+    min-height: 50px;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 600px) {
+    body {
+      padding: 0 10px;
+    }
+    
+    .avatar {
+      width: 80px;
+    }
+  
+    textarea {
+      height: 60px;
+    }
+  }
+  

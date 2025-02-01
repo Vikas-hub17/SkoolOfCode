@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Python Pal: Your AI Python Tutor</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Welcome to Python Pal!</h1>
+    <p>
+      Python Pal is an AI-powered tutor designed especially for kids learning Python.
+      Our friendly tutor characters make coding fun and interactive. Ask Python Pal any coding question,
+      choose your favorite tutor avatar, and complete mini challenges to improve your skills!
+    </p>
+    <p>
+      If your API key quota runs out, you can update your API key below.
+    </p>
+  </header>
+
+  <section id="settings">
+    <label for="apiKeyInput">API Key:</label>
+    <input type="text" id="apiKeyInput" placeholder="Enter your API key here">
+  </section>
+
+  <section id="avatar-selection">
+    <h2>Choose Your Tutor Avatar:</h2>
+    <div class="avatar-options">
+      <img src="/static/img/owl.png" alt="Wise Owl" class="avatar" data-name="Wise Owl">
+      <img src="/static/img/robot.png" alt="Playful Robot" class="avatar" data-name="Playful Robot">
+      <img src="/static/img/dragon.png" alt="Friendly Dragon" class="avatar" data-name="Friendly Dragon">
+    </div>
+    <p id="selectedAvatar">Selected Avatar: None</p>
+  </section>
+
+  <section id="chat-section">
+    <h2>Ask Python Pal a Question:</h2>
+    <textarea id="userPrompt" placeholder="Type your Python question or code here..."></textarea>
+    <button id="sendButton">Ask</button>
+    <div id="responseArea"></div>
+  </section>
+
+  <section id="mini-challenge">
+    <h2>Mini Challenge</h2>
+    <p>Solve this Python puzzle:</p>
+    <pre id="challengeText">
+Print "Hello, World!" to the console.
+    </pre>
+    <textarea id="challengeAnswer" placeholder="Type your solution here..."></textarea>
+    <button id="submitChallenge">Submit Challenge</button>
+    <div id="challengeFeedback"></div>
+  </section>
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html>
