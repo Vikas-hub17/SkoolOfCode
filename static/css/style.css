@@ -1,128 +1,278 @@
-/* Base styles and responsive settings */
+/* ---------------------------
+   🎨 Base Theme & Variables
+--------------------------- */
+:root {
+  --bg-color: #fceabb;
+  --text-color: #333;
+  --accent-color: #ff7f50;
+  --secondary-color: #ff6347;
+  --panel-bg: #fff;
+  --switch-bg: #ddd;
+  --switch-knob: #fff;
+  --font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+/* Dark Theme */
+body.dark-theme {
+  --bg-color: #2c3e50;
+  --text-color: #ecf0f1;
+  --accent-color: #e74c3c;
+  --secondary-color: #c0392b;
+  --panel-bg: #34495e;
+  --switch-bg: #555;
+  --switch-knob: #ecf0f1;
+}
+
 body {
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    background-color: #f0f8ff;
-    color: #333;
-    margin: 0;
-    padding: 0 20px;
-    overflow-x: hidden;
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0 20px;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+/* ---------------------------
+   🎯 Header Styling
+--------------------------- */
+header {
+  text-align: center;
+  padding: 20px;
+  animation: fadeInDown 1s ease-out;
+}
+
+header .logo {
+  width: 80px;
+  animation: spin 4s linear infinite;
+}
+
+h1, h2 {
+  color: var(--accent-color);
+  transition: color 0.3s;
+}
+
+/* Hover Effect */
+h1:hover, h2:hover {
+  color: var(--secondary-color);
+}
+
+/* ---------------------------
+   🎛 Theme Toggle Switch (Updated Styling)
+--------------------------- */
+#theme-switcher {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider (track) */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: var(--switch-bg);
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: background-color 0.4s;
+}
+
+/* The knob inside the slider */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--switch-knob);
+  border-radius: 50%;
+  transition: transform 0.4s;
+}
+
+/* When the checkbox is checked */
+input:checked + .slider {
+  background-color: var(--secondary-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* ---------------------------
+   📌 Section Styling
+--------------------------- */
+#main-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+#left-panel {
+  flex: 1 1 600px;
+  max-width: 800px;
+}
+
+#right-panel {
+  flex: 0 1 300px;
+  background-color: var(--panel-bg);
+  border: 2px dashed var(--accent-color);
+  border-radius: 10px;
+  padding: 10px;
+  height: fit-content;
+}
+
+/* Animated Sections */
+section {
+  margin: 20px 0;
+  padding: 15px;
+  border: 2px dashed var(--accent-color);
+  border-radius: 10px;
+  background-color: var(--panel-bg);
+  animation: fadeIn 1s ease-out;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover Effect */
+section:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------------------------
+   🎮 Button Styling
+--------------------------- */
+button {
+  background-color: var(--accent-color);
+  color: white;
+  font-size: 1em;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+/* Hover Effect */
+button:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Click Effect */
+button:active {
+  transform: scale(0.95);
+}
+
+/* Disabled Button */
+button:disabled {
+  background-color: #bbb;
+  cursor: not-allowed;
+}
+
+/* ---------------------------
+   🔠 Input Field Styling
+--------------------------- */
+input[type="text"], textarea {
+  width: 100%;
+  font-size: 1em;
+  margin: 10px 0;
+  padding: 8px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Input Focus */
+input:focus, textarea:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 8px rgba(255, 127, 80, 0.5);
+}
+
+/* ---------------------------
+   🎮 Avatar Selection (Smaller Size)
+--------------------------- */
+.avatar-options {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.avatar {
+  width: 70px; /* Reduced size */
+  height: auto;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  transition: transform 0.3s, border 0.3s;
+}
+
+/* Hover & Click Effect */
+.avatar:hover {
+  transform: scale(1.1);
+  border: 2px solid var(--accent-color);
+}
+
+.avatar:active {
+  transform: scale(0.95);
+}
+
+/* ---------------------------
+   ✨ AI Typing Effect
+--------------------------- */
+#responseArea {
+  border: 2px dashed var(--accent-color);
+  padding: 10px;
+  background-color: var(--panel-bg);
+  border-radius: 8px;
+  min-height: 50px;
+  font-family: monospace;
+  white-space: pre-line;
+  animation: fadeIn 0.5s forwards;
+}
+
+/* ---------------------------
+   🎉 Confetti Animation
+--------------------------- */
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ---------------------------
+   📱 Responsive Design
+--------------------------- */
+@media (max-width: 600px) {
+  #main-container {
+    flex-direction: column;
   }
-  
-  header {
-    text-align: center;
-    padding: 20px;
-    animation: fadeInDown 1s ease-out;
-  }
-  
-  h1, h2 {
-    color: #2a7ae2;
-  }
-  
-  /* Sections styling with animations */
-  section {
-    margin: 20px 0;
-    padding: 10px;
-    border: 2px dashed #2a7ae2;
-    border-radius: 10px;
-    background-color: #fff;
-    animation: fadeIn 1s ease-out;
-  }
-  
-  /* Settings and avatar selection */
-  #settings, #avatar-selection, #chat-section, #mini-challenge {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  /* Avatar selection styling */
-  .avatar-options {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
   .avatar {
-    width: 100px;
-    height: auto;
-    cursor: pointer;
-    border: 2px solid transparent;
-    border-radius: 50%;
-    transition: transform 0.3s, border 0.3s;
+    width: 60px; /* Smaller avatars for mobile */
   }
-  
-  .avatar:hover {
-    transform: scale(1.1);
-    border: 2px solid #2a7ae2;
-  }
-  
-  /* Textarea styling */
   textarea {
-    width: 100%;
-    height: 80px;
-    font-size: 1em;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 5px;
-    transition: box-shadow 0.3s;
+    height: 60px;
   }
-  
-  textarea:focus {
-    box-shadow: 0 0 5px #2a7ae2;
-  }
-  
-  /* Button styling with hover animations */
-  button {
-    background-color: #2a7ae2;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  
-  button:hover {
-    background-color: #1f5bb5;
-    transform: scale(1.05);
-  }
-  
-  /* Response and challenge feedback areas */
-  #responseArea, #challengeFeedback {
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #e8f0fe;
-    border-radius: 5px;
-    min-height: 50px;
-    opacity: 0;
-    animation: fadeIn 0.5s forwards;
-  }
-  
-  /* Animations */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  /* Responsive design for smaller screens */
-  @media (max-width: 600px) {
-    body {
-      padding: 0 10px;
-    }
-    
-    .avatar {
-      width: 80px;
-    }
-  
-    textarea {
-      height: 60px;
-    }
-  }
-  
+}
